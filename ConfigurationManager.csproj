@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09DA97B6-5D16-4B71-B044-2A5789A8B62E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PGT.ConfigurationManager</RootNamespace>
+    <AssemblyName>ConfigurationManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ConfigurationManager.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;Professional</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\Program Files %28x86%29\PrettyGoodTerminal\</OutputPath>
+    <DefineConstants>DEBUG;DEVELOPMENT</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Unsigned|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-Unsigned\</OutputPath>
+    <DefineConstants>DEBUG;DEVELOPMENT</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=2.0.20029.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\MoreLinq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PGTInterfaces">
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="PrettyGoodTerminal">
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PrettyGoodTerminal.exe</HintPath>
+    </Reference>
+    <Reference Include="ScriptingEngine">
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\ScriptingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="STerminal">
+      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\STerminal.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigDS.cs">
+      <DependentUpon>ConfigDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigManager.Designer.cs">
+      <DependentUpon>ConfigManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigSet.Designer.cs">
+      <DependentUpon>ConfigSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigTarget.Designer.cs">
+      <DependentUpon>ConfigTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigPuller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigPuller.Designer.cs">
+      <DependentUpon>ConfigPuller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSVHeaderMapper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSVHeaderMapper.Designer.cs">
+      <DependentUpon>CSVHeaderMapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Deployer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployer.Designer.cs">
+      <DependentUpon>Deployer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PGTInterface.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CopyConfigLines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CopyConfigLines.Designer.cs">
+      <DependentUpon>CopyConfigLines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SqlConnectionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SqlConnectionEditor.Designer.cs">
+      <DependentUpon>SqlConnectionEditor.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ConfigDS.xsc">
+      <DependentUpon>ConfigDS.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConfigDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ConfigDS.xss">
+      <DependentUpon>ConfigDS.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigurationManager.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigManager.resx">
+      <DependentUpon>ConfigManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigSet.resx">
+      <DependentUpon>ConfigSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigTarget.resx">
+      <DependentUpon>ConfigTarget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigPuller.resx">
+      <DependentUpon>ConfigPuller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSVHeaderMapper.resx">
+      <DependentUpon>CSVHeaderMapper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployer.resx">
+      <DependentUpon>Deployer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CopyConfigLines.resx">
+      <DependentUpon>CopyConfigLines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlConnectionEditor.resx">
+      <DependentUpon>SqlConnectionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database\CreateConfigManagerObjects_20151007_v1.sql" />
+    <Content Include="Resources\build_Selection_16xLG.png" />
+    <Content Include="Resources\color_wheel_16xLG.png" />
+    <Content Include="Resources\DatabaseProject_7342_16x_32.bmp" />
+    <None Include="Resources\DBSchema_12823.ico" />
+    <Content Include="Resources\ExtendedStoredProcedure_8284_32.bmp" />
+    <Content Include="Resources\Guage_16xLG.png" />
+    <Content Include="Resources\ManageCounterSets_8769.png" />
+    <None Include="Resources\RegistryEditor_5838.ico" />
+    <Content Include="Resources\Reports-collapsed_12995_32.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
