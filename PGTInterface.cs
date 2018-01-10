@@ -52,14 +52,15 @@ namespace PGT.ConfigurationManager
       ToolStripSeparator tss1 = new ToolStripSeparator();
       ToolStripSeparator tss2 = new ToolStripSeparator();
 
-      tsmMainMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmConfigure, /*tsmPermissions, tss1, tsmSaveToDatabase, */tsmConfigManager/*, tss2, tsmHistoryView, tsmstatisticsView */});
+      tsmMainMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmConfigure, tsmConfigManager });
 
       #region Menu definition
       // 
-      // tsmSQLInterfaceMainMenu
+      // tsmMainMenu
       // 
       tsmMainMenu.Image = Resource1.RegistryEditor_5838.ToBitmap();
       tsmMainMenu.ImageTransparentColor = System.Drawing.Color.Black;
+      tsmMainMenu.ImageScaling = ToolStripItemImageScaling.None;
       tsmMainMenu.Name = "PGT.ConfigurationManager.tsmMainMenu";
       tsmMainMenu.Text = "Configuration Manager";
       // 
@@ -67,53 +68,20 @@ namespace PGT.ConfigurationManager
       // 
       tsmConfigure.Image = Resource1.ManageCounterSets_8769;
       tsmConfigure.ImageTransparentColor = System.Drawing.Color.Black;
+      tsmConfigure.ImageScaling = ToolStripItemImageScaling.None;
       tsmConfigure.Name = "PGT.ConfigurationManager.tsmConfigure";
       tsmConfigure.Text = "Configure database";
       tsmConfigure.Click += tsmConfigure_Click;
       // 
-      // tsmPermissions
-      // 
-      //tsmPermissions.Image = Resource1.ManageCounterSets_8769;
-      //tsmPermissions.ImageTransparentColor = System.Drawing.Color.Black;
-      //tsmPermissions.Name = "PGT.ConfigurationManager.tsmPermissions";
-      //tsmPermissions.Text = "Manage Permissions";
-      //tsmPermissions.Click +=tsmPermissions_Click;
-      // 
-      // tsmSQLInterfaceMainMenu
-      // 
-      //tsmSaveToDatabase.Image = Resource1.build_Selection_16xLG;
-      //tsmSaveToDatabase.ImageTransparentColor = System.Drawing.Color.Black;
-      //tsmSaveToDatabase.Name = "PGT.ConfigurationManager.tsmSaveToDatabase";
-      ////tsmSaveToDatabase.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-      //tsmSaveToDatabase.Text = "Save result to database";
-      //tsmSaveToDatabase.Click += tsmSaveToDatabase_Click;
-      // 
-      // tsmDataManager
+      // tsmConfigManager
       // 
       tsmConfigManager.Image = Resource1.DBSchema_12823.ToBitmap();
       tsmConfigManager.ImageTransparentColor = System.Drawing.Color.Black;
-      tsmConfigManager.Name = "PGT.ConfigurationManager.tsmDataManager";
+      tsmConfigManager.ImageScaling = ToolStripItemImageScaling.None;
+      tsmConfigManager.Name = "PGT.ConfigurationManager.tsmConfigManager";
       tsmConfigManager.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
       tsmConfigManager.Text = "Manage configurations";
       tsmConfigManager.Click += tsmConfigManager_Click;
-      // 
-      // tsmHistoryView
-      // 
-      //tsmHistoryView.Image = Resource1.ExtendedStoredProcedure_8284_32;
-      //tsmHistoryView.ImageTransparentColor = System.Drawing.Color.Black;
-      //tsmHistoryView.Name = "PGT.ConfigurationManager.tsmHistoryView";
-      //tsmHistoryView.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-      //tsmHistoryView.Text = "Show history";
-      //tsmHistoryView.Click += tsmHistoryView_Click;
-      // 
-      // tsmHistoryView
-      // 
-      //tsmstatisticsView.Image = Resource1.Reports_collapsed_12995_32;
-      //tsmstatisticsView.ImageTransparentColor = System.Drawing.Color.Black;
-      //tsmstatisticsView.Name = "PGT.ConfigurationManager.tsmstatisticsView";
-      //tsmstatisticsView.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-      //tsmstatisticsView.Text = "Show statistics";
-      //tsmstatisticsView.Click += tsmStatisticsView_Click;
       #endregion
       return tsmMainMenu;
     }
