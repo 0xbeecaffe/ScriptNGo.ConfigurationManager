@@ -20,7 +20,7 @@ namespace PGT.ConfigurationManager
   {
     #region Fields
     private Form AppMainForm;
-    System.ComponentModel.BackgroundWorker _workInProgress;
+    private WorkInProgress _workInProgress;
     private string _workInProgressText;
     private string _workInProgressCaption;
     #endregion
@@ -28,11 +28,9 @@ namespace PGT.ConfigurationManager
     #region ICustomMenuHandler Members
     public PGTInterface()
     {
-      _workInProgress = new System.ComponentModel.BackgroundWorker();
-      _workInProgress.WorkerSupportsCancellation = true;
-      _workInProgressCaption = "Please wait";
-      _workInProgressText = "Loading module...";
-      _workInProgress.DoWork += DoWorkAnimation;
+			_workInProgress = new WorkInProgress();
+      _workInProgress.Caption = "Please wait";
+      _workInProgress.Text = "Loading module...";
       if (!Properties.Settings.Default.HasSettingsUpgraded)
       {
         Properties.Settings.Default.Upgrade();
@@ -43,14 +41,8 @@ namespace PGT.ConfigurationManager
     public System.Windows.Forms.ToolStripMenuItem GetMenu()
     {
       ToolStripMenuItem tsmMainMenu = new ToolStripMenuItem();
-      ToolStripMenuItem tsmSaveToDatabase = new ToolStripMenuItem();
       ToolStripMenuItem tsmConfigManager = new ToolStripMenuItem();
       ToolStripMenuItem tsmConfigure = new ToolStripMenuItem();
-      ToolStripMenuItem tsmHistoryView = new ToolStripMenuItem();
-      ToolStripMenuItem tsmstatisticsView = new ToolStripMenuItem();
-      ToolStripMenuItem tsmPermissions = new ToolStripMenuItem();
-      ToolStripSeparator tss1 = new ToolStripSeparator();
-      ToolStripSeparator tss2 = new ToolStripSeparator();
 
       tsmMainMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmConfigure, tsmConfigManager });
 
@@ -58,7 +50,7 @@ namespace PGT.ConfigurationManager
       // 
       // tsmMainMenu
       // 
-      tsmMainMenu.Image = Resource1.RegistryEditor_5838.ToBitmap();
+      tsmMainMenu.Image = Resource1.RegistryEditor_5838_16x;
       tsmMainMenu.ImageTransparentColor = System.Drawing.Color.Black;
       tsmMainMenu.ImageScaling = ToolStripItemImageScaling.None;
       tsmMainMenu.Name = "PGT.ConfigurationManager.tsmMainMenu";
@@ -75,7 +67,7 @@ namespace PGT.ConfigurationManager
       // 
       // tsmConfigManager
       // 
-      tsmConfigManager.Image = Resource1.DBSchema_12823.ToBitmap();
+      tsmConfigManager.Image = Resource1.DBSchema_12823;
       tsmConfigManager.ImageTransparentColor = System.Drawing.Color.Black;
       tsmConfigManager.ImageScaling = ToolStripItemImageScaling.None;
       tsmConfigManager.Name = "PGT.ConfigurationManager.tsmConfigManager";
@@ -87,9 +79,9 @@ namespace PGT.ConfigurationManager
     }
     private void tsmConfigManager_Click(object sender, EventArgs e)
     {
-      _workInProgressCaption = "Please wait";
-      _workInProgressText = "Loading module";
-      _workInProgress.RunWorkerAsync();
+      _workInProgress.Caption = "Please wait";
+      _workInProgress.Text = "Loading module";
+			_workInProgress.Run();
       try
       {
         ConfigManager CM = new ConfigManager();
@@ -98,7 +90,7 @@ namespace PGT.ConfigurationManager
       }
       finally
       {
-        _workInProgress.CancelAsync();
+				_workInProgress.Cancel();
       }
     }
     private void tsmStatisticsView_Click(object sender, EventArgs e)
@@ -125,35 +117,12 @@ namespace PGT.ConfigurationManager
       }
       finally
       {
-        _workInProgress.CancelAsync();
+				_workInProgress.Cancel();
       }
     }
     public void SetMainForm(System.Windows.Forms.Form mainForm)
     {
       AppMainForm = mainForm;
-    }
-    private void DoWorkAnimation(object sender, System.ComponentModel.DoWorkEventArgs e)
-    {
-      WorkInProgressAnimation L = null;
-      DateTime waitStartedAt = DateTime.Now;
-      while (true)
-      {
-        System.Threading.Thread.Sleep(20);
-        if ((DateTime.Now - waitStartedAt).TotalMilliseconds > 500)
-        {
-          if (L == null)
-          {
-            L = new WorkInProgressAnimation(_workInProgressCaption, _workInProgressText);
-            L.Show();
-          }
-        }
-        Application.DoEvents();
-        if (_workInProgress.CancellationPending)
-        {
-          if (L != null) L.Close();
-          break;
-        }
-      }
     }
     #endregion
   }

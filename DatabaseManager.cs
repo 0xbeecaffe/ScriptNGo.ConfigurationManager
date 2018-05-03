@@ -11,6 +11,7 @@
 /* #                                                                       #*/
 /* #########################################################################*/
 
+using PGT.Common;
 using System;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -34,7 +35,7 @@ namespace PGT.ConfigurationManager
     /// <param name="sqlPassword">SQL Password for connection</param>
     /// <param name="animation">A Backgoundworker to stop before displaying any dialog boxes. Optional</param>
     /// <returns></returns>
-    public static bool RegisterDatabase(string ServerName, string DatabaseName, bool intSecurity, string sqlUserName, string sqlPassword, BackgroundWorker animation = null)
+    public static bool RegisterDatabase(string ServerName, string DatabaseName, bool intSecurity, string sqlUserName, string sqlPassword, WorkInProgress animation = null)
     {
       bool runResult = true;
       bool DBExists = false;
@@ -63,16 +64,16 @@ namespace PGT.ConfigurationManager
               if (!DBExists)
               {
                 DebugEx.WriteLine("database doesn't exist", DebugLevel.Informational);
-                if (animation != null) animation.CancelAsync();
+                animation?.Cancel();
                 runResult = MessageBox.Show(string.Format("Database {0} does not exists. Do you want to create it now?", DatabaseName), "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
-                if (runResult & animation != null && !animation.IsBusy) animation.RunWorkerAsync();
+                if (runResult) animation?.Run();
               }
               else DebugEx.WriteLine("database exists", DebugLevel.Informational);
             }
             catch (SqlException Ex)
             {
               DebugEx.WriteLine("Unexpected error 1");
-              if (animation != null) animation.CancelAsync();
+              animation?.Cancel();
               MessageBox.Show(string.Format("Unexpected error while checking database {0} : {1} ", DatabaseName, Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
               runResult = false;
             }
@@ -100,7 +101,7 @@ namespace PGT.ConfigurationManager
                 else
                 {
                   DebugEx.WriteLine("Unexpected error 2");
-                  if (animation != null) animation.CancelAsync();
+                  animation?.Cancel();
                   MessageBox.Show(string.Format("Unexpected error while creating database {0} : {1} ", DatabaseName, Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   runResult = false;
                 }
@@ -111,7 +112,7 @@ namespace PGT.ConfigurationManager
           catch (SqlException Ex)
           {
             DebugEx.WriteLine("Unexpected error 3");
-            if (animation != null) animation.CancelAsync();
+            animation?.Cancel();
             MessageBox.Show(string.Format("Unexpected error while opening connection : {0} ", Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             runResult = false;
           }
@@ -154,7 +155,7 @@ namespace PGT.ConfigurationManager
                   else
                   {
                     // other exceptions are unexpected and unhandled errors
-                    if (animation != null) animation.CancelAsync();
+                    animation?.Cancel();
                     MessageBox.Show(string.Format("Unexpected error while creating database {0} : {1} ", DatabaseName, Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     runResult = false;
                     throw Ex;
@@ -183,7 +184,7 @@ namespace PGT.ConfigurationManager
                   }
                   catch (Exception Ex)
                   {
-                    if (animation != null) animation.CancelAsync();
+                    animation?.Cancel();
                     MessageBox.Show(string.Format("Unexpected error while creating database objects : {0} ", Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     runResult = false;
                   }
@@ -206,13 +207,13 @@ namespace PGT.ConfigurationManager
       }
       catch (Exception ex)
       {
-        if (animation != null) animation.CancelAsync();
+				animation?.Cancel();
         MessageBox.Show("Sorry, I am unable to register database. Please view debug logs for more details. Error : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         runResult = false;
       }
       if (DBCreated | DBObjectsCreated)
       {
-        if (animation != null) animation.CancelAsync();
+        animation?.Cancel();
         string s = DBCreated ? "Database created sucessfully." : "";
         if (DBObjectsCreated) s += " Required database objects created sucessfully.";
         MessageBox.Show(s, "SQL Operation success", MessageBoxButtons.OK, MessageBoxIcon.Information);

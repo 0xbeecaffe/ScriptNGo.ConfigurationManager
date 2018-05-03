@@ -35,7 +35,7 @@ namespace PGT.ConfigurationManager
     /// The ID of the configuration set beeing deployed
     /// </summary>
     private int _configurationSetID;
-    private BackgroundWorker _workInProgress;
+    private WorkInProgress _workInProgress;
     private string _workInProgressText = "Work in progress...";
     private string _workInProgressCaption = "Please be patient";
     private bool _workInProgress_CancelPressed = false;
@@ -63,9 +63,7 @@ namespace PGT.ConfigurationManager
     public ConfigPuller(int ConfigurationSetID)
     {
       InitializeComponent();
-      _workInProgress = new BackgroundWorker();
-      _workInProgress.DoWork += DoWorkAnimation;
-      _workInProgress.WorkerSupportsCancellation = true;
+			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText );
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
     }
@@ -110,45 +108,6 @@ namespace PGT.ConfigurationManager
         btnPullConfig.Enabled = false;
         MessageBox.Show("There no targets in this set to pull the configuration from.", "Empty configuration set", MessageBoxButtons.OK, MessageBoxIcon.Error);
         Close();
-      }
-    }
-    #endregion
-
-    #region General staff
-    private void DoWorkAnimation(object sender, DoWorkEventArgs e)
-    {
-      WorkInProgressAnimation L = null;
-      _workInProgress_CancelPressed = false;
-      DateTime waitStartedAt = DateTime.Now;
-      while (true)
-      {
-        System.Threading.Thread.Sleep(20);
-        if (L == null || (DateTime.Now - waitStartedAt).TotalMilliseconds > 200)
-        {
-          if (L == null)
-          {
-            L = new WorkInProgressAnimation(_workInProgressText, _workInProgressCaption, _workInProgressSupportCancellation);
-            L.SqlCommandToCancel = _workInProgressSqlCommandToCancel;
-            L.TopMost = true;
-            L.Show();
-            L.BringToFront();
-            L.Focus();
-          }
-          else
-          {
-            L.Text = _workInProgressCaption;
-            L.SetLabelText(_workInProgressText);
-            L.BringToFront();
-            _workInProgress_CancelPressed = L.CancelPressed;
-          }
-
-        }
-        Application.DoEvents();
-        if (_workInProgress.CancellationPending)
-        {
-          if (L != null) L.Close();
-          break;
-        }
       }
     }
     #endregion
@@ -249,7 +208,7 @@ namespace PGT.ConfigurationManager
     {
       _workInProgressCaption = "Please wait...";
       _workInProgressText = "Generating script...";
-      if (!_workInProgress.IsBusy) _workInProgress.RunWorkerAsync();
+			_workInProgress.Run();
       DisableControls();
       try
       {
@@ -329,7 +288,7 @@ namespace PGT.ConfigurationManager
       }
       finally
       {
-        _workInProgress.CancelAsync();
+				_workInProgress.Cancel();
         _workInProgressSupportCancellation = false;
         btnPullConfig.Enabled = ScriptManagers.Count == 0;
         lblOperationInProgress.Text = "Pulling configuration...";
@@ -345,9 +304,9 @@ namespace PGT.ConfigurationManager
       int defaultColumnCount = Enum.GetNames(typeof(InputFileHeader)).Length - 1;
       bool errorOccurred = false;
 
-      _workInProgressCaption = "Operation in progress";
-      _workInProgressText = "Please wait while saving script results...";
-      if (!_workInProgress.IsBusy) _workInProgress.RunWorkerAsync();
+      _workInProgress.Caption = "Operation in progress";
+      _workInProgress.Text = "Please wait while saving script results...";
+			_workInProgress.Run();
       try
       {
         int itemCount = thisManager.GetItems().Count();
@@ -380,7 +339,7 @@ namespace PGT.ConfigurationManager
           }
           catch (Exception Ex)
           {
-            _workInProgress.CancelAsync();
+						_workInProgress.Cancel();
             MessageBox.Show(string.Format("Item not saved as an unexpected error occurred : {0}", Ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             errorOccurred = true;
           }
@@ -388,7 +347,7 @@ namespace PGT.ConfigurationManager
       }
       finally
       {
-        _workInProgress.CancelAsync();
+				_workInProgress.Cancel();
       }
       if (!errorOccurred) thisManager.SetScriptSaved();
     }

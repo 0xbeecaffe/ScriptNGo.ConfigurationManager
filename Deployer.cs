@@ -27,7 +27,7 @@ namespace PGT.ConfigurationManager
     /// The ID of the configuration set beeing deployed
     /// </summary>
     private int _configurationSetID;
-    private BackgroundWorker _workInProgress;
+    private WorkInProgress _workInProgress;
     private string _workInProgressText = "Work in progress...";
     private string _workInProgressCaption = "Please be patient";
     private bool _workInProgress_CancelPressed = false;
@@ -39,9 +39,7 @@ namespace PGT.ConfigurationManager
     public Deployer(int ConfigurationSetID)
     {
       InitializeComponent();
-      _workInProgress = new BackgroundWorker();
-      _workInProgress.DoWork += DoWorkAnimation;
-      _workInProgress.WorkerSupportsCancellation = true;
+			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText);
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
     }
@@ -94,9 +92,9 @@ namespace PGT.ConfigurationManager
     #region Private members
     private void Deploy()
     {
-      _workInProgressCaption = "Please wait...";
-      _workInProgressText = "Generating script...";
-      if (!_workInProgress.IsBusy) _workInProgress.RunWorkerAsync();
+      _workInProgress.Caption = "Please wait...";
+      _workInProgress.Text = "Generating script...";
+      _workInProgress.Run();
       try
       {
         PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings();
@@ -164,7 +162,7 @@ namespace PGT.ConfigurationManager
       }
       finally
       {
-        _workInProgress.CancelAsync();
+				_workInProgress.Cancel();
         _workInProgressSupportCancellation = false;
         DialogResult = DialogResult.OK;
       }
@@ -184,42 +182,6 @@ namespace PGT.ConfigurationManager
       return result;
     }
 
-    private void DoWorkAnimation(object sender, DoWorkEventArgs e)
-    {
-      WorkInProgressAnimation L = null;
-      _workInProgress_CancelPressed = false;
-      DateTime waitStartedAt = DateTime.Now;
-      while (true)
-      {
-        System.Threading.Thread.Sleep(20);
-        if (L == null || (DateTime.Now - waitStartedAt).TotalMilliseconds > 200)
-        {
-          if (L == null)
-          {
-            L = new WorkInProgressAnimation(_workInProgressText, _workInProgressCaption, _workInProgressSupportCancellation);
-            L.SqlCommandToCancel = _workInProgressSqlCommandToCancel;
-            L.TopMost = true;
-            L.Show();
-            L.BringToFront();
-            L.Focus();
-          }
-          else
-          {
-            L.Text = _workInProgressCaption;
-            L.SetLabelText(_workInProgressText);
-            L.BringToFront();
-            _workInProgress_CancelPressed = L.CancelPressed;
-          }
-
-        }
-        Application.DoEvents();
-        if (_workInProgress.CancellationPending)
-        {
-          if (L != null) L.Close();
-          break;
-        }
-      }
-    }
     #endregion
 
     #region Event handlers

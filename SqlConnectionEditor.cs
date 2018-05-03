@@ -9,6 +9,7 @@
 /* #                                                                       #*/
 /* #########################################################################*/
 
+using PGT.Common;
 using PGT.ConfigurationManager.Properties;
 using System;
 using System.ComponentModel;
@@ -18,8 +19,8 @@ namespace PGT.ConfigurationManager
 {
   public partial class SqlConnectionEditor : Form
   {
-    private BackgroundWorker _animation;
-    public SqlConnectionEditor(BackgroundWorker animation = null)
+    private WorkInProgress _animation;
+    public SqlConnectionEditor(WorkInProgress animation = null)
     {
       InitializeComponent();
       _animation = animation;
@@ -36,7 +37,7 @@ namespace PGT.ConfigurationManager
       Settings curSettings = Settings.Default;
       if (DialogResult == System.Windows.Forms.DialogResult.OK)
       {
-        if (_animation != null && !_animation.IsBusy) _animation.RunWorkerAsync();
+				_animation.Run();
         try
         {
           if (curSettings.SQLServerNames == null) curSettings.SQLServerNames = new System.Collections.Specialized.StringCollection();
@@ -50,8 +51,8 @@ namespace PGT.ConfigurationManager
           DatabaseManager.RegisterDatabase(curSettings.SQLServerName, curSettings.DatabaseName, curSettings.SQLIntegratedSecurity, curSettings.SQLServerUsername, curSettings.SQLServerPassword, _animation);
         }
         finally
-        { 
-          if (_animation != null) _animation.CancelAsync(); 
+        {
+					_animation?.Cancel();
         }
         MessageBox.Show("Application needs to be restarted for the updated configuration to take effect.", "Restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }

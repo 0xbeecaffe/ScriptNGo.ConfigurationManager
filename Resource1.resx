@@ -139,13 +139,13 @@
   <data name="Reports_collapsed_12995_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Reports-collapsed_12995_32.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DBSchema_12823" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\DBSchema_12823.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RegistryEditor_5838" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\RegistryEditor_5838.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CreateConfigManagerObjects_20151007_v1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Database\CreateConfigManagerObjects_20151007_v1.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DBSchema_12823" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\DBSchema_12823.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RegistryEditor_5838_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\RegistryEditor_5838_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -28,10 +28,10 @@
     <AssemblyOriginatorKeyFile>ConfigurationManager.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\temp\PGTTest\PGT_7200_Portable\PrettyGoodTerminal\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\PrettyGoodTerminal\bin\</OutputPath>
     <DefineConstants>DEBUG;Professional</DefineConstants>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -217,10 +217,12 @@
     <Content Include="Resources\color_wheel_16xLG.png" />
     <Content Include="Resources\DatabaseProject_7342_16x_32.bmp" />
     <None Include="Resources\DBSchema_12823.ico" />
+    <None Include="Resources\DBSchema_12823.png" />
     <Content Include="Resources\ExtendedStoredProcedure_8284_32.bmp" />
     <Content Include="Resources\Guage_16xLG.png" />
     <Content Include="Resources\ManageCounterSets_8769.png" />
     <None Include="Resources\RegistryEditor_5838.ico" />
+    <None Include="Resources\RegistryEditor_5838_16x.png" />
     <Content Include="Resources\Reports-collapsed_12995_32.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

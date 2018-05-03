@@ -80,7 +80,7 @@ namespace PGT.ConfigurationManager
           _workInProgress.Cancel();
           if (MessageBox.Show(string.Format("An unexpected database error occurred : {0} \r\n Do you want to reconfigure SQL connection parameters ? ", Ex.Message), "Database connection error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
           {
-            (new SqlConnectionEditor(_workInProgress.Worker)).ShowDialog();
+            (new SqlConnectionEditor(_workInProgress)).ShowDialog();
           }
         }
         catch (Exception Ex)
@@ -183,7 +183,7 @@ namespace PGT.ConfigurationManager
             term.MdiParent = this.MdiParent;
             term.Show();
             term.BringToFront();
-            term.ConnectDisconnectTask(ConnectionTaskAction.Connect, CP);
+            term.ConnectDisconnectTask(ConnectionTaskAction.Connect, true, CP);
           }
           else MessageBox.Show("Unable to open a terminal because the script target was not found.", "Cannot open terminal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }

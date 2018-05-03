@@ -112,12 +112,12 @@ namespace PGT.ConfigurationManager {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon DBSchema_12823 {
+        internal static System.Drawing.Bitmap DBSchema_12823 {
             get {
                 object obj = ResourceManager.GetObject("DBSchema_12823", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -152,12 +152,12 @@ namespace PGT.ConfigurationManager {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon RegistryEditor_5838 {
+        internal static System.Drawing.Bitmap RegistryEditor_5838_16x {
             get {
-                object obj = ResourceManager.GetObject("RegistryEditor_5838", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("RegistryEditor_5838_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
