@@ -52,6 +52,10 @@ namespace PGT.ConfigurationManager
     /// Used to remember Button back colors
     /// </summary>
     private Hashtable ButtonColors = new Hashtable();
+		/// <summary>
+		/// The PGT Configuration dataset, loaded upon onotialization of the form
+		/// </summary>
+		private PGTDataSet pgtDataSet;
 
     #endregion
 
@@ -59,6 +63,7 @@ namespace PGT.ConfigurationManager
     public ConfigManager()
     {
       InitializeComponent();
+			this.pgtDataSet = SettingsManager.LoadDataset();
       SetControlBackGround(this);
     }
     private void ConfigManager_Load(object sender, EventArgs e)
@@ -133,7 +138,7 @@ namespace PGT.ConfigurationManager
     /// <param name="e"></param>
     private void AddConfigTarget()
     {
-      ConfigTarget CT = new ConfigTarget();
+      ConfigTarget CT = new ConfigTarget(this.pgtDataSet);
       if (CT.ShowDialog() == DialogResult.OK)
       {
         UpdateConfigTargetList();
@@ -160,7 +165,7 @@ namespace PGT.ConfigurationManager
           {
             ConfigDS.ConfigTargetsRow selectedTarget = targets[0];
             host = selectedTarget.TargetIP;
-            PGTDataSet.ScriptSettingRow _localScriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings();
+            PGTDataSet.ScriptSettingRow _localScriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
             ConnectionParameters CP = new ConnectionParameters
             {
               DeviceIP = selectedTarget.TargetIP,
@@ -203,7 +208,7 @@ namespace PGT.ConfigurationManager
       if (lvTargets.SelectedItems.Count > 0)
       {
         ListViewItem lvi = lvTargets.SelectedItems[0];
-        ConfigTarget CT = new ConfigTarget((int)lvi.Tag);
+        ConfigTarget CT = new ConfigTarget(this.pgtDataSet, (int)lvi.Tag);
         if (CT.ShowDialog() == DialogResult.OK)
         {
           UpdateConfigTargetList();
@@ -245,7 +250,7 @@ namespace PGT.ConfigurationManager
     private void ImportTargets()
     {
       string imputFileName = string.Empty;
-      PGTDataSet.ScriptSettingRow scriptSettings = SettingsManager.GetCurrentScriptSettings();
+      PGTDataSet.ScriptSettingRow scriptSettings = SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
       OpenFileDialog openFileDialog = new OpenFileDialog();
       openFileDialog.Filter = "CSV files|*.csv|All files|*.*";
       if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -817,7 +822,7 @@ namespace PGT.ConfigurationManager
       if (lvSets.SelectedItems.Count > 0)
       {
         ListViewItem setLVI = lvSets.SelectedItems[0];
-        Deployer d = new Deployer((int)setLVI.Tag);
+        Deployer d = new Deployer(this.pgtDataSet, (int)setLVI.Tag);
         d.ShowDialog(this);
       }
     }
@@ -827,7 +832,7 @@ namespace PGT.ConfigurationManager
       if (lvSets.SelectedItems.Count > 0)
       {
         ListViewItem setLVI = lvSets.SelectedItems[0];
-        ConfigPuller cp = new ConfigPuller((int)setLVI.Tag);
+        ConfigPuller cp = new ConfigPuller(this.pgtDataSet, (int)setLVI.Tag);
         cp.MdiParent = this.MdiParent;
         cp.Show();
       }

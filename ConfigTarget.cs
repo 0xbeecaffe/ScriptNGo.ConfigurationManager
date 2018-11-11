@@ -22,14 +22,17 @@ namespace PGT.ConfigurationManager
 {
   public partial class ConfigTarget : Form
   {
+		private PGTDataSet pgtDataSet;
+
     /// <summary>
     /// Opens a new Config Target Editor dialog.
     /// </summary>
     /// <param name="ConfigTargetID">The ID of the Target to Edit. If empty or set to -1 dialog goes into insert mode</param>
     /// 
-    public ConfigTarget(int ConfigTargetID = -1)
+    public ConfigTarget(PGTDataSet ds, int ConfigTargetID = -1)
     {
       InitializeComponent();
+			this.pgtDataSet = ds;
       if (ConfigTargetID != -1)
       {
         this.configTargetsTableAdapter.FillByConfigTargetID(this.configDS.ConfigTargets, ConfigTargetID);
@@ -73,7 +76,7 @@ namespace PGT.ConfigurationManager
       if (!string.IsNullOrEmpty(Properties.Settings.Default.MRUProtocol)) cbxProtocols.Text = Properties.Settings.Default.MRUProtocol;
       // populate jump servers
       cbxJumpServers.Items.Clear();
-      var js = JumpServersManager.GetJumpServers();
+      var js = JumpServersManager.GetJumpServers(this.pgtDataSet);
       PGTDataSet.JumpServersRow emptyRow = JumpServersManager.DefaultJumpServerSettings();
       emptyRow.IPAddress = "";
       emptyRow.HostName = "";

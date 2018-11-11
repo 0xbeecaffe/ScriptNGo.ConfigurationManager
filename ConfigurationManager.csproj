@@ -61,6 +61,7 @@
   <ItemGroup>
     <Reference Include="Common">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MoreLinq, Version=2.0.20029.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,15 +70,19 @@
     </Reference>
     <Reference Include="PGTInterfaces">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTInterfaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PrettyGoodTerminal">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PrettyGoodTerminal.exe</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ScriptingEngine">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\ScriptingEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="STerminal">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\STerminal.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

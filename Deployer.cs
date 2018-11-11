@@ -33,12 +33,14 @@ namespace PGT.ConfigurationManager
     private bool _workInProgress_CancelPressed = false;
     private bool _workInProgressSupportCancellation = false;
     private SqlCommand _workInProgressSqlCommandToCancel = null;
+		private PGTDataSet pgtDataSet;
     #endregion
 
     #region Initialization
-    public Deployer(int ConfigurationSetID)
+    public Deployer(PGTDataSet ds, int ConfigurationSetID)
     {
       InitializeComponent();
+			this.pgtDataSet = ds;
 			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText);
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
@@ -97,7 +99,7 @@ namespace PGT.ConfigurationManager
       _workInProgress.Run();
       try
       {
-        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings();
+        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
         string sepChar = _scriptSettings.CSVSeparator;
         string sExtendedHeader = PGT.Common.Helper.ArrayToString(Enum.GetNames(typeof(InputFileHeader)), sepChar);
         sExtendedHeader += "ConfigLineID";

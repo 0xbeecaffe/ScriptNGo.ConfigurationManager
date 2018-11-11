@@ -57,12 +57,14 @@ namespace PGT.ConfigurationManager
     /// Indicates whether the Form can be closed at its current state
     /// </summary>
     private bool CanClose = true;
+		private PGTDataSet pgtDataSet;
     #endregion
 
     #region Initialization
-    public ConfigPuller(int ConfigurationSetID)
+    public ConfigPuller(PGTDataSet ds, int ConfigurationSetID)
     {
       InitializeComponent();
+			this.pgtDataSet = ds;
 			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText );
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
@@ -134,7 +136,7 @@ namespace PGT.ConfigurationManager
           // ScriptManagers.Remove(thisManager);
           terminators.Add(Task.Factory.StartNew(() => TerminateScript(thisManager)));
         }
-        int waitTime = (int)SettingsManager.GetCurrentScriptSettings().ConnectTimeout.TotalMilliseconds;
+        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.pgtDataSet).ConnectTimeout.TotalMilliseconds;
         Task.Factory.StartNew(new Action(delegate
         {
           // wait for each task to complete for the double amount of connection timeout
@@ -184,7 +186,7 @@ namespace PGT.ConfigurationManager
       bool stopped = false;
       try
       {
-        int waitTime = (int)SettingsManager.GetCurrentScriptSettings().ConnectTimeout.TotalMilliseconds;
+        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.pgtDataSet).ConnectTimeout.TotalMilliseconds;
         DebugEx.WriteLine(string.Format("Stopping script {0}...", thisManager.GetScriptName()), DebugLevel.Informational);
         stopped = thisManager.StopScript(waitTime);
         thisManager.SetScriptSaved();
@@ -218,7 +220,7 @@ namespace PGT.ConfigurationManager
           object o = qTA.CloneConfigSet(_configurationSetID, string.Format("{0}_{1}{2}{3}{4}{5}{6}", tbSelConfigSetName.Text, d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second));
           _configurationSetID = Convert.ToInt32(o);
         }
-        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings();
+        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
         string sepChar = _scriptSettings.CSVSeparator;
         string sExtendedHeader = PGT.Common.Helper.ArrayToString(Enum.GetNames(typeof(InputFileHeader)), sepChar);
         sExtendedHeader += "SetTargetID";
