@@ -184,7 +184,7 @@ namespace PGT.ConfigurationManager
             };
             var t = from Form form in Application.OpenForms where form is TerminalWindow select form;
             if (t.Count() > 0) term = (TerminalWindow)t.ElementAt(0);
-            else term = new TerminalWindow(Color.FromArgb(_localScriptSettings.TerminalForeColor), Color.FromArgb(_localScriptSettings.TerminalBackColor));
+            else term = new TerminalWindow();
             term.MdiParent = this.MdiParent;
             term.Show();
             term.BringToFront();

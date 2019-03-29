@@ -77,6 +77,7 @@ namespace PGT.ConfigurationManager
       #endregion
       return tsmMainMenu;
     }
+		public bool AsyncLoadFrom(string fileName) => false;
     private void tsmConfigManager_Click(object sender, EventArgs e)
     {
       _workInProgress.Caption = "Please wait";
