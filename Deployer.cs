@@ -101,7 +101,7 @@ namespace PGT.ConfigurationManager
       {
         PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
         string sepChar = _scriptSettings.CSVSeparator;
-        string sExtendedHeader = PGT.Common.Helper.ArrayToString(Enum.GetNames(typeof(InputFileHeader)), sepChar);
+        string sExtendedHeader = string.Join(sepChar, Enum.GetNames(typeof(InputFileHeader)));
         sExtendedHeader += "ConfigLineID";
         PGT.PGTScriptManager _ScriptManager = ScriptingFormManager.OpenNewScriptingForm();
         if (_ScriptManager != null)

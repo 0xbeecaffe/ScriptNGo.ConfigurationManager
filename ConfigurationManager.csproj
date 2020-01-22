@@ -71,6 +71,7 @@
     <Reference Include="PGTCore, Version=8.5.0.2, Culture=neutral, PublicKeyToken=aff603dfccc1d9da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PGTInterfaces">
       <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTInterfaces.dll</HintPath>
