@@ -1,11 +1,12 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
@@ -14,7 +15,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
   public partial class CopyConfigLines : Form
   {

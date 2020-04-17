@@ -1,22 +1,23 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
-using PGT.Common;
-using PGT.ExtensionInterfaces;
+using Scriptngo.Common;
+using Scriptngo.ExtensionInterfaces;
 using System;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
-  class PGTInterface : ICustomMenuHandler
+  class SNGInterface : ICustomMenuHandler
   {
     #region Fields
     private Form AppMainForm;
@@ -26,7 +27,7 @@ namespace PGT.ConfigurationManager
     #endregion
 
     #region ICustomMenuHandler Members
-    public PGTInterface()
+    public SNGInterface()
     {
 			_workInProgress = new WorkInProgress();
       _workInProgress.Caption = "Please wait";
@@ -53,7 +54,7 @@ namespace PGT.ConfigurationManager
       tsmMainMenu.Image = Resource1.RegistryEditor_5838_16x;
       tsmMainMenu.ImageTransparentColor = System.Drawing.Color.Black;
       tsmMainMenu.ImageScaling = ToolStripItemImageScaling.None;
-      tsmMainMenu.Name = "PGT.ConfigurationManager.tsmMainMenu";
+      tsmMainMenu.Name = "Scriptngo.ConfigurationManager.tsmMainMenu";
       tsmMainMenu.Text = "Configuration Manager";
       // 
       // tsmConfigure
@@ -61,7 +62,7 @@ namespace PGT.ConfigurationManager
       tsmConfigure.Image = Resource1.ManageCounterSets_8769;
       tsmConfigure.ImageTransparentColor = System.Drawing.Color.Black;
       tsmConfigure.ImageScaling = ToolStripItemImageScaling.None;
-      tsmConfigure.Name = "PGT.ConfigurationManager.tsmConfigure";
+      tsmConfigure.Name = "Scriptngo.ConfigurationManager.tsmConfigure";
       tsmConfigure.Text = "Configure database";
       tsmConfigure.Click += tsmConfigure_Click;
       // 
@@ -70,7 +71,7 @@ namespace PGT.ConfigurationManager
       tsmConfigManager.Image = Resource1.DBSchema_12823;
       tsmConfigManager.ImageTransparentColor = System.Drawing.Color.Black;
       tsmConfigManager.ImageScaling = ToolStripItemImageScaling.None;
-      tsmConfigManager.Name = "PGT.ConfigurationManager.tsmConfigManager";
+      tsmConfigManager.Name = "Scriptngo.ConfigurationManager.tsmConfigManager";
       tsmConfigManager.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
       tsmConfigManager.Text = "Manage configurations";
       tsmConfigManager.Click += tsmConfigManager_Click;

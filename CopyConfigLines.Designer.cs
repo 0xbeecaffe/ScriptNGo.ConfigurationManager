@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class CopyConfigLines
   {
@@ -31,10 +31,10 @@
       this.clbTargets = new System.Windows.Forms.CheckedListBox();
       this.label1 = new System.Windows.Forms.Label();
       this.btnSaveConfig = new System.Windows.Forms.Button();
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
-      this.setTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
-      this.qTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
-      this.configLinesTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
+      this.setTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
+      this.qTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
+      this.configLinesTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
       this.btnCancel = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.configDS)).BeginInit();
       this.SuspendLayout();

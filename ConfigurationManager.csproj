@@ -7,7 +7,7 @@
     <ProjectGuid>{09DA97B6-5D16-4B71-B044-2A5789A8B62E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PGT.ConfigurationManager</RootNamespace>
+    <RootNamespace>Scriptngo.ConfigurationManager</RootNamespace>
     <AssemblyName>ConfigurationManager</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -29,7 +29,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\PrettyGoodTerminal\bin\</OutputPath>
+    <OutputPath>..\ScriptNGo\bin\</OutputPath>
     <DefineConstants>DEBUG;Professional</DefineConstants>
     <DebugType>none</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,7 +40,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\Program Files %28x86%29\PrettyGoodTerminal\</OutputPath>
+    <OutputPath>..\ScriptNGo\bin\</OutputPath>
     <DefineConstants>DEBUG;DEVELOPMENT</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,30 +60,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common">
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\Common.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\ScriptNGo\bin\Common.dll</HintPath>
     </Reference>
-    <Reference Include="MoreLinq, Version=2.0.20029.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\MoreLinq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PGTCore, Version=8.5.0.2, Culture=neutral, PublicKeyToken=aff603dfccc1d9da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PGTInterfaces">
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\PGTInterfaces.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="MoreLinq">
+      <HintPath>..\ScriptNGo\bin\MoreLinq.dll</HintPath>
     </Reference>
     <Reference Include="ScriptingEngine">
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\ScriptingEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\ScriptNGo\bin\ScriptingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="SNGCore">
+      <HintPath>..\ScriptNGo\bin\SNGCore.dll</HintPath>
+    </Reference>
+    <Reference Include="SNGInterfaces">
+      <HintPath>..\ScriptNGo\bin\SNGInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="STerminal">
-      <HintPath>..\..\..\Program Files (x86)\PrettyGoodTerminal\STerminal.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\ScriptNGo\bin\STerminal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -141,11 +133,12 @@
     <Compile Include="Deployer.Designer.cs">
       <DependentUpon>Deployer.cs</DependentUpon>
     </Compile>
-    <Compile Include="PGTInterface.cs" />
+    <Compile Include="SNGInterface.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+      <CustomToolNamespace>Scriptngo.ConfigurationManager</CustomToolNamespace>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">

@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class CSVHeaderMapper
   {

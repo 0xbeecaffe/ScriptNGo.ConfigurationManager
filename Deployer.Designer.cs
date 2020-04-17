@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class Deployer
   {
@@ -34,15 +34,15 @@
       this.tbSelConfigSetName = new System.Windows.Forms.TextBox();
       this.cbScriptPerHost = new System.Windows.Forms.CheckBox();
       this.btnDeploySet = new System.Windows.Forms.Button();
-      this.deployTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.DeployTableAdapter();
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
+      this.deployTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.DeployTableAdapter();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
       this.label2 = new System.Windows.Forms.Label();
       this.clbTargets = new System.Windows.Forms.CheckedListBox();
       this.cmTargets = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.cmTargetsSelectAll = new System.Windows.Forms.ToolStripMenuItem();
       this.cmTargetsClearAll = new System.Windows.Forms.ToolStripMenuItem();
       this.cmTargetsToggle = new System.Windows.Forms.ToolStripMenuItem();
-      this.setTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
+      this.setTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
       this.label3 = new System.Windows.Forms.Label();
       this.numHostPerForm = new System.Windows.Forms.NumericUpDown();
       this.btnCancel = new System.Windows.Forms.Button();
@@ -73,9 +73,9 @@
       // cbScriptPerHost
       // 
       this.cbScriptPerHost.AutoSize = true;
-      this.cbScriptPerHost.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_SeparateForms;
+      this.cbScriptPerHost.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_SeparateForms;
       this.cbScriptPerHost.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.cbScriptPerHost.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_SeparateForms", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.cbScriptPerHost.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_SeparateForms", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.cbScriptPerHost.Location = new System.Drawing.Point(12, 40);
       this.cbScriptPerHost.Name = "cbScriptPerHost";
       this.cbScriptPerHost.Size = new System.Drawing.Size(246, 17);
@@ -170,7 +170,7 @@
       // 
       // numHostPerForm
       // 
-      this.numHostPerForm.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_HostPerForm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.numHostPerForm.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_HostPerForm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.numHostPerForm.Location = new System.Drawing.Point(254, 39);
       this.numHostPerForm.Maximum = new decimal(new int[] {
             1000,
@@ -185,7 +185,7 @@
       this.numHostPerForm.Name = "numHostPerForm";
       this.numHostPerForm.Size = new System.Drawing.Size(54, 20);
       this.numHostPerForm.TabIndex = 51;
-      this.numHostPerForm.Value = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_HostPerForm;
+      this.numHostPerForm.Value = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_HostPerForm;
       // 
       // btnCancel
       // 
@@ -202,9 +202,9 @@
       // cbStartScripts
       // 
       this.cbStartScripts.AutoSize = true;
-      this.cbStartScripts.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_StartScripts;
+      this.cbStartScripts.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Deployer_StartScripts;
       this.cbStartScripts.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.cbStartScripts.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_StartScripts", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.cbStartScripts.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Deployer_StartScripts", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.cbStartScripts.Location = new System.Drawing.Point(12, 65);
       this.cbStartScripts.Name = "cbStartScripts";
       this.cbStartScripts.Size = new System.Drawing.Size(143, 17);

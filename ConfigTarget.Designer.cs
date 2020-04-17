@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class ConfigTarget
   {
@@ -37,10 +37,10 @@
       System.Windows.Forms.Label portLabel;
       System.Windows.Forms.Label noteLabel;
       System.Windows.Forms.Label label1;
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
       this.configTargetsBS = new System.Windows.Forms.BindingSource(this.components);
-      this.configTargetsTableAdapter = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigTargetsTableAdapter();
-      this.tableAdapterManager = new PGT.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager();
+      this.configTargetsTableAdapter = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigTargetsTableAdapter();
+      this.tableAdapterManager = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager();
       this.targetNameTextBox = new System.Windows.Forms.TextBox();
       this.targetIPTextBox = new System.Windows.Forms.TextBox();
       this.portTextBox = new System.Windows.Forms.TextBox();
@@ -48,12 +48,12 @@
       this.cbxVendors = new System.Windows.Forms.ComboBox();
       this.cbxJumpServers = new System.Windows.Forms.ComboBox();
       this.cbxProtocols = new System.Windows.Forms.ComboBox();
-      this.qTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
+      this.qTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
       this.cbxTargetGroup = new System.Windows.Forms.ComboBox();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
-      this.distinctTargetGroupsTableAdapter = new PGT.ConfigurationManager.ConfigDSTableAdapters.DistinctTargetGroupsTableAdapter();
+      this.distinctTargetGroupsTableAdapter = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.DistinctTargetGroupsTableAdapter();
       targetNameLabel = new System.Windows.Forms.Label();
       targetIPLabel = new System.Windows.Forms.Label();
       deviceVendorLabel = new System.Windows.Forms.Label();
@@ -161,7 +161,7 @@
       this.tableAdapterManager.ConfigSetTargetsTableAdapter = null;
       this.tableAdapterManager.ConfigTargetsTableAdapter = null;
       this.tableAdapterManager.Connection = null;
-      this.tableAdapterManager.UpdateOrder = PGT.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+      this.tableAdapterManager.UpdateOrder = Scriptngo.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
       // 
       // targetNameTextBox
       // 

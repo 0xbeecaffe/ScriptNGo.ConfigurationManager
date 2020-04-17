@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PGT Device Configuration Manager")]
-[assembly: AssemblyDescription("PGT Custom Menu Handler extension library")]
+[assembly: AssemblyTitle("Device Configuration Manager")]
+[assembly: AssemblyDescription("Script N'Go Configuration Manager plugin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Laszlo Frank")]
-[assembly: AssemblyProduct("PGT Device Configuration Manager")]
-[assembly: AssemblyCopyright("Copyright © 2016-2017 by Laszlo Frank")]
-[assembly: AssemblyTrademark("Pretty Good Terminal")]
+[assembly: AssemblyCompany("ScriptNGo")]
+[assembly: AssemblyProduct("ScriptNGo Device Configuration Manager")]
+[assembly: AssemblyCopyright("Copyright © 2016-2020 by Laszlo Frank")]
+[assembly: AssemblyTrademark("ScriptNGo")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

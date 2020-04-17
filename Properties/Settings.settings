@@ -9,7 +9,7 @@
       <Value Profile="(Default)">.</Value>
     </Setting>
     <Setting Name="DatabaseName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PGT</Value>
+      <Value Profile="(Default)">SNG_CM</Value>
     </Setting>
     <Setting Name="SQLServerUsername" Type="System.String" Scope="User">
       <Value Profile="(Default)">sa</Value>
@@ -26,10 +26,10 @@
     <Setting Name="PGTConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=BTP132237\SQL;Initial Catalog=ConfigStore;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=BTP132237\SQL;Initial Catalog=SNG_CM;Integrated Security=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=BTP132237\SQL;Initial Catalog=ConfigStore;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=BTP132237\SQL;Initial Catalog=SNG_CM;Integrated Security=True</Value>
     </Setting>
     <Setting Name="MRUVendor" Type="System.String" Scope="User">
       <Value Profile="(Default)">Cisco</Value>

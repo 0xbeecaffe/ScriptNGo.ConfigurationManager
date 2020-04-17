@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class ConfigManager
   {
@@ -30,13 +30,13 @@
     {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigManager));
-      this.configTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigTargetsTableAdapter();
-      this.configSetTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigSetTargetsTableAdapter();
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
-      this.configSetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigSetsTableAdapter();
-      this.setTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
-      this.configLinesTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
-      this.qTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
+      this.configTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigTargetsTableAdapter();
+      this.configSetTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigSetTargetsTableAdapter();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
+      this.configSetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigSetsTableAdapter();
+      this.setTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
+      this.configLinesTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
+      this.qTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
       this.panel1 = new System.Windows.Forms.Panel();
       this.tabControl1 = new System.Windows.Forms.CustomTabControl();
       this.tpConfigSets = new System.Windows.Forms.TabPage();
@@ -754,7 +754,7 @@
       // tsslSQLServer
       // 
       this.tsslSQLServer.BackColor = System.Drawing.Color.Transparent;
-      this.tsslSQLServer.Image = global::PGT.ConfigurationManager.Resource1.DatabaseProject_7342_16x_32;
+      this.tsslSQLServer.Image = global::Scriptngo.ConfigurationManager.Resource1.DatabaseProject_7342_16x_32;
       this.tsslSQLServer.ImageTransparentColor = System.Drawing.Color.Black;
       this.tsslSQLServer.Name = "tsslSQLServer";
       this.tsslSQLServer.Size = new System.Drawing.Size(108, 17);
@@ -772,7 +772,7 @@
       this.MinimumSize = new System.Drawing.Size(968, 572);
       this.Name = "ConfigManager";
       this.ShowIcon = false;
-      this.Text = "PGT Configuration Manager";
+      this.Text = "Configuration Manager";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigManager_FormClosing);
       this.Load += new System.EventHandler(this.ConfigManager_Load);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawGradientBackground);

@@ -1,15 +1,15 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
-
-using PGT.Common;
+using Scriptngo.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,21 +18,21 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
   public partial class ConfigTarget : Form
   {
-		private PGTDataSet pgtDataSet;
+		private SNGDataSet SNGDataSet;
 
     /// <summary>
     /// Opens a new Config Target Editor dialog.
     /// </summary>
     /// <param name="ConfigTargetID">The ID of the Target to Edit. If empty or set to -1 dialog goes into insert mode</param>
     /// 
-    public ConfigTarget(PGTDataSet ds, int ConfigTargetID = -1)
+    public ConfigTarget(SNGDataSet ds, int ConfigTargetID = -1)
     {
       InitializeComponent();
-			this.pgtDataSet = ds;
+			this.SNGDataSet = ds;
       if (ConfigTargetID != -1)
       {
         this.configTargetsTableAdapter.FillByConfigTargetID(this.configDS.ConfigTargets, ConfigTargetID);
@@ -76,11 +76,11 @@ namespace PGT.ConfigurationManager
       if (!string.IsNullOrEmpty(Properties.Settings.Default.MRUProtocol)) cbxProtocols.Text = Properties.Settings.Default.MRUProtocol;
       // populate jump servers
       cbxJumpServers.Items.Clear();
-      var js = JumpServersManager.GetJumpServers(this.pgtDataSet);
-      PGTDataSet.JumpServersRow emptyRow = JumpServersManager.DefaultJumpServerSettings();
+      var js = JumpServersManager.GetJumpServers(this.SNGDataSet);
+      SNGDataSet.JumpServersRow emptyRow = JumpServersManager.DefaultJumpServerSettings();
       emptyRow.IPAddress = "";
       emptyRow.HostName = "";
-      List<PGTDataSet.JumpServersRow> jumpServerList = js.ToList();
+      List<SNGDataSet.JumpServersRow> jumpServerList = js.ToList();
       jumpServerList.Insert(0, emptyRow);
       cbxJumpServers.DataSource = jumpServerList;
       // set values for dropdown lists
@@ -88,7 +88,7 @@ namespace PGT.ConfigurationManager
       ConfigDS.ConfigTargetsRow curRow = (ConfigDS.ConfigTargetsRow)((DataRowView)configTargetsBS.Current).Row;
       if (curRow != null)
       {
-        PGTDataSet.JumpServersRow thisJumpServer = jumpServerList.FirstOrDefault(j => j.IPAddress == curRow.JumpServerIP);
+        SNGDataSet.JumpServersRow thisJumpServer = jumpServerList.FirstOrDefault(j => j.IPAddress == curRow.JumpServerIP);
         cbxJumpServers.SelectedItem = thisJumpServer;
         cbxVendors.Text = curRow.DeviceVendor;
         cbxProtocols.Text = curRow.Protocol;
@@ -110,7 +110,7 @@ namespace PGT.ConfigurationManager
             if (count == 0)
             {
               ConfigDS.ConfigTargetsRow curRow = (ConfigDS.ConfigTargetsRow)((DataRowView)configTargetsBS.Current).Row;
-              if (cbxJumpServers.SelectedValue != null) curRow.JumpServerIP = (cbxJumpServers.SelectedItem as PGTDataSet.JumpServersRow).IPAddress;
+              if (cbxJumpServers.SelectedValue != null) curRow.JumpServerIP = (cbxJumpServers.SelectedItem as SNGDataSet.JumpServersRow).IPAddress;
               configTargetsBS.EndEdit();
               configTargetsTableAdapter.Update(configDS);
             }
@@ -140,8 +140,8 @@ namespace PGT.ConfigurationManager
 
     private void cbxJumpServers_Format(object sender, ListControlConvertEventArgs e)
     {
-      string address = ((PGTDataSet.JumpServersRow)e.ListItem).IPAddress;
-      string hostname = ((PGTDataSet.JumpServersRow)e.ListItem).HostName;
+      string address = ((SNGDataSet.JumpServersRow)e.ListItem).IPAddress;
+      string hostname = ((SNGDataSet.JumpServersRow)e.ListItem).HostName;
       if (string.IsNullOrEmpty(hostname)) e.Value = address;
       else e.Value = string.Format("{0} ( {1} )", address, hostname);
     }

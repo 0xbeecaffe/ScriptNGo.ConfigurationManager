@@ -1,15 +1,16 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
-using PGT.Common;
+using Scriptngo.Common;
 using System;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -18,7 +19,7 @@ using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
   public partial class Deployer : Form
   {
@@ -33,14 +34,14 @@ namespace PGT.ConfigurationManager
     private bool _workInProgress_CancelPressed = false;
     private bool _workInProgressSupportCancellation = false;
     private SqlCommand _workInProgressSqlCommandToCancel = null;
-		private PGTDataSet pgtDataSet;
+		private SNGDataSet SNGDataSet;
     #endregion
 
     #region Initialization
-    public Deployer(PGTDataSet ds, int ConfigurationSetID)
+    public Deployer(SNGDataSet ds, int ConfigurationSetID)
     {
       InitializeComponent();
-			this.pgtDataSet = ds;
+			this.SNGDataSet = ds;
 			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText);
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
@@ -99,11 +100,11 @@ namespace PGT.ConfigurationManager
       _workInProgress.Run();
       try
       {
-        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
+        SNGDataSet.ScriptSettingRow _scriptSettings = Scriptngo.Common.SettingsManager.GetCurrentScriptSettings(this.SNGDataSet);
         string sepChar = _scriptSettings.CSVSeparator;
         string sExtendedHeader = string.Join(sepChar, Enum.GetNames(typeof(InputFileHeader)));
         sExtendedHeader += "ConfigLineID";
-        PGT.PGTScriptManager _ScriptManager = ScriptingFormManager.OpenNewScriptingForm();
+        Scriptngo.SNGScriptManager _ScriptManager = ScriptingFormManager.OpenNewScriptingForm();
         if (_ScriptManager != null)
         {
           string thisLine = string.Empty;

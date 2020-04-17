@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class ConfigSet
   {
@@ -31,17 +31,17 @@
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.Label configSetNameLabel;
       System.Windows.Forms.Label noteLabel;
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
-      this.configSetsTableAdapter = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigSetsTableAdapter();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
+      this.configSetsTableAdapter = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigSetsTableAdapter();
       this.tbConfigSetName = new System.Windows.Forms.TextBox();
       this.configSetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.tbNote = new System.Windows.Forms.TextBox();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
-      this.tableAdapterManager = new PGT.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager();
+      this.tableAdapterManager = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager();
       this.textBox1 = new System.Windows.Forms.TextBox();
       this.cbxCreateSetFrom = new System.Windows.Forms.ComboBox();
-      this.qTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
+      this.qTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
       this.label1 = new System.Windows.Forms.Label();
       configSetNameLabel = new System.Windows.Forms.Label();
       noteLabel = new System.Windows.Forms.Label();
@@ -127,7 +127,7 @@
       this.tableAdapterManager.ConfigSetTargetsTableAdapter = null;
       this.tableAdapterManager.ConfigTargetsTableAdapter = null;
       this.tableAdapterManager.Connection = null;
-      this.tableAdapterManager.UpdateOrder = PGT.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+      this.tableAdapterManager.UpdateOrder = Scriptngo.ConfigurationManager.ConfigDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
       // 
       // textBox1
       // 

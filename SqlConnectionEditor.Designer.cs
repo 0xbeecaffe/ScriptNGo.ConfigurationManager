@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class SqlConnectionEditor
   {
@@ -100,28 +100,28 @@
       // 
       // tbSQLPassword
       // 
-      this.tbSQLPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PGT.ConfigurationManager.Properties.Settings.Default, "SQLServerPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.tbSQLPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "SQLServerPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbSQLPassword.Location = new System.Drawing.Point(150, 133);
       this.tbSQLPassword.Name = "tbSQLPassword";
       this.tbSQLPassword.PasswordChar = '*';
       this.tbSQLPassword.Size = new System.Drawing.Size(191, 20);
       this.tbSQLPassword.TabIndex = 11;
-      this.tbSQLPassword.Text = global::PGT.ConfigurationManager.Properties.Settings.Default.SQLServerPassword;
+      this.tbSQLPassword.Text = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.SQLServerPassword;
       // 
       // tbSQLUser
       // 
-      this.tbSQLUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PGT.ConfigurationManager.Properties.Settings.Default, "SQLServerUsername", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.tbSQLUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "SQLServerUsername", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbSQLUser.Location = new System.Drawing.Point(150, 107);
       this.tbSQLUser.Name = "tbSQLUser";
       this.tbSQLUser.Size = new System.Drawing.Size(191, 20);
       this.tbSQLUser.TabIndex = 9;
-      this.tbSQLUser.Text = global::PGT.ConfigurationManager.Properties.Settings.Default.SQLServerUsername;
+      this.tbSQLUser.Text = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.SQLServerUsername;
       // 
       // checkBox1
       // 
       this.checkBox1.AutoSize = true;
-      this.checkBox1.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.SQLIntegratedSecurity;
-      this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "SQLIntegratedSecurity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.checkBox1.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.SQLIntegratedSecurity;
+      this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "SQLIntegratedSecurity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.checkBox1.Location = new System.Drawing.Point(16, 76);
       this.checkBox1.Name = "checkBox1";
       this.checkBox1.Size = new System.Drawing.Size(163, 17);
@@ -132,12 +132,12 @@
       // 
       // tbDatabaseName
       // 
-      this.tbDatabaseName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PGT.ConfigurationManager.Properties.Settings.Default, "DatabaseName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.tbDatabaseName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "DatabaseName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbDatabaseName.Location = new System.Drawing.Point(150, 44);
       this.tbDatabaseName.Name = "tbDatabaseName";
       this.tbDatabaseName.Size = new System.Drawing.Size(191, 20);
       this.tbDatabaseName.TabIndex = 6;
-      this.tbDatabaseName.Text = global::PGT.ConfigurationManager.Properties.Settings.Default.DatabaseName;
+      this.tbDatabaseName.Text = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.DatabaseName;
       // 
       // cbxSQLServerName
       // 

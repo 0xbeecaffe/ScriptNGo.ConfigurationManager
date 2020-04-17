@@ -1,17 +1,18 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
 using MoreLinq;
-using PGT.Common;
-using PGT.ExtensionInterfaces;
+using Scriptngo.Common;
+using Scriptngo.ExtensionInterfaces;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
   public partial class ConfigManager : Form
   {
@@ -53,9 +54,9 @@ namespace PGT.ConfigurationManager
     /// </summary>
     private Hashtable ButtonColors = new Hashtable();
 		/// <summary>
-		/// The PGT Configuration dataset, loaded upon onotialization of the form
+		/// The SNG Configuration dataset, loaded upon initialization of the form
 		/// </summary>
-		private PGTDataSet pgtDataSet;
+		private SNGDataSet SNGDataSet;
 
     #endregion
 
@@ -63,7 +64,7 @@ namespace PGT.ConfigurationManager
     public ConfigManager()
     {
       InitializeComponent();
-			this.pgtDataSet = SettingsManager.LoadDataset();
+			this.SNGDataSet = SettingsManager.LoadDataset();
       SetControlBackGround(this);
     }
     private void ConfigManager_Load(object sender, EventArgs e)
@@ -138,7 +139,7 @@ namespace PGT.ConfigurationManager
     /// <param name="e"></param>
     private void AddConfigTarget()
     {
-      ConfigTarget CT = new ConfigTarget(this.pgtDataSet);
+      ConfigTarget CT = new ConfigTarget(this.SNGDataSet);
       if (CT.ShowDialog() == DialogResult.OK)
       {
         UpdateConfigTargetList();
@@ -165,7 +166,7 @@ namespace PGT.ConfigurationManager
           {
             ConfigDS.ConfigTargetsRow selectedTarget = targets[0];
             host = selectedTarget.TargetIP;
-            PGTDataSet.ScriptSettingRow _localScriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
+            SNGDataSet.ScriptSettingRow _localScriptSettings = Scriptngo.Common.SettingsManager.GetCurrentScriptSettings(this.SNGDataSet);
             ConnectionParameters CP = new ConnectionParameters
             {
               DeviceIP = selectedTarget.TargetIP,
@@ -176,7 +177,7 @@ namespace PGT.ConfigurationManager
               LogonUserName = _localScriptSettings.ScriptingUserName,
               EnablePassword = _localScriptSettings.DeviceEnablePassword,
               LogonPassword = _localScriptSettings.ScriptingPassword,
-              AuthType = (PGTTermAuthType)Enum.Parse(typeof(PGTTermAuthType), _localScriptSettings.TerminalAuthType),
+              AuthType = (SNGTermAuthType)Enum.Parse(typeof(SNGTermAuthType), _localScriptSettings.TerminalAuthType),
               LineFeedRule = (LineFeedRule)Enum.Parse(typeof(LineFeedRule), _localScriptSettings.TerminalLineFeedRule),
               EncodingType = (EncodingType)Enum.Parse(typeof(EncodingType), _localScriptSettings.TerminalEncoding),
               TerminalType = (TerminalType)Enum.Parse(typeof(TerminalType), _localScriptSettings.TerminalType),
@@ -208,7 +209,7 @@ namespace PGT.ConfigurationManager
       if (lvTargets.SelectedItems.Count > 0)
       {
         ListViewItem lvi = lvTargets.SelectedItems[0];
-        ConfigTarget CT = new ConfigTarget(this.pgtDataSet, (int)lvi.Tag);
+        ConfigTarget CT = new ConfigTarget(this.SNGDataSet, (int)lvi.Tag);
         if (CT.ShowDialog() == DialogResult.OK)
         {
           UpdateConfigTargetList();
@@ -250,7 +251,7 @@ namespace PGT.ConfigurationManager
     private void ImportTargets()
     {
       string imputFileName = string.Empty;
-      PGTDataSet.ScriptSettingRow scriptSettings = SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
+      SNGDataSet.ScriptSettingRow scriptSettings = SettingsManager.GetCurrentScriptSettings(this.SNGDataSet);
       OpenFileDialog openFileDialog = new OpenFileDialog();
       openFileDialog.Filter = "CSV files|*.csv|All files|*.*";
       if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -822,7 +823,7 @@ namespace PGT.ConfigurationManager
       if (lvSets.SelectedItems.Count > 0)
       {
         ListViewItem setLVI = lvSets.SelectedItems[0];
-        Deployer d = new Deployer(this.pgtDataSet, (int)setLVI.Tag);
+        Deployer d = new Deployer(this.SNGDataSet, (int)setLVI.Tag);
         d.ShowDialog(this);
       }
     }
@@ -832,7 +833,7 @@ namespace PGT.ConfigurationManager
       if (lvSets.SelectedItems.Count > 0)
       {
         ListViewItem setLVI = lvSets.SelectedItems[0];
-        ConfigPuller cp = new ConfigPuller(this.pgtDataSet, (int)setLVI.Tag);
+        ConfigPuller cp = new ConfigPuller(this.SNGDataSet, (int)setLVI.Tag);
         cp.MdiParent = this.MdiParent;
         cp.Show();
       }

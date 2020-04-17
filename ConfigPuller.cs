@@ -1,17 +1,18 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
 using MoreLinq;
-using PGT.Common;
-using PGT.ExtensionInterfaces;
+using Scriptngo.Common;
+using Scriptngo.ExtensionInterfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PGT.ConfigurationManager
+namespace Scriptngo.ConfigurationManager
 {
   public partial class ConfigPuller : Form
   {
@@ -52,19 +53,19 @@ namespace PGT.ConfigurationManager
     /// <summary>
     /// The list of ScriptManagers of opened Scripting Forms
     /// </summary>
-    private List<PGTScriptManager> ScriptManagers = new List<PGTScriptManager>();
+    private List<SNGScriptManager> ScriptManagers = new List<SNGScriptManager>();
     /// <summary>
     /// Indicates whether the Form can be closed at its current state
     /// </summary>
     private bool CanClose = true;
-		private PGTDataSet pgtDataSet;
+		private SNGDataSet SNGDataSet;
     #endregion
 
     #region Initialization
-    public ConfigPuller(PGTDataSet ds, int ConfigurationSetID)
+    public ConfigPuller(SNGDataSet ds, int ConfigurationSetID)
     {
       InitializeComponent();
-			this.pgtDataSet = ds;
+			this.SNGDataSet = ds;
 			_workInProgress = new WorkInProgress(_workInProgressCaption, _workInProgressText );
       SetControlBackGround(this);
       _configurationSetID = ConfigurationSetID;
@@ -130,13 +131,13 @@ namespace PGT.ConfigurationManager
         List<Task> terminators = new List<Task>();
         for (int i = ScriptManagers.Count - 1; i >= 0; i--)
         {
-          PGTScriptManager thisManager = ScriptManagers[i];
+          SNGScriptManager thisManager = ScriptManagers[i];
           // Remove from ScriptManagers list to prevent acting on _ScriptManager_OnScriptFinished() event fired by th script
           // in response to StopScript() call below.
           // ScriptManagers.Remove(thisManager);
           terminators.Add(Task.Factory.StartNew(() => TerminateScript(thisManager)));
         }
-        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.pgtDataSet).ConnectTimeout.TotalMilliseconds;
+        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.SNGDataSet).ConnectTimeout.TotalMilliseconds;
         Task.Factory.StartNew(new Action(delegate
         {
           // wait for each task to complete for the double amount of connection timeout
@@ -181,12 +182,12 @@ namespace PGT.ConfigurationManager
     /// Terminates a script specified by its ScriptManager
     /// </summary>
     /// <param name="thisManager"></param>
-    private void TerminateScript(PGTScriptManager thisManager)
+    private void TerminateScript(SNGScriptManager thisManager)
     {
       bool stopped = false;
       try
       {
-        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.pgtDataSet).ConnectTimeout.TotalMilliseconds;
+        int waitTime = (int)SettingsManager.GetCurrentScriptSettings(this.SNGDataSet).ConnectTimeout.TotalMilliseconds;
         DebugEx.WriteLine(string.Format("Stopping script {0}...", thisManager.GetScriptName()), DebugLevel.Informational);
         stopped = thisManager.StopScript(waitTime);
         thisManager.SetScriptSaved();
@@ -220,11 +221,11 @@ namespace PGT.ConfigurationManager
           object o = qTA.CloneConfigSet(_configurationSetID, string.Format("{0}_{1}{2}{3}{4}{5}{6}", tbSelConfigSetName.Text, d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second));
           _configurationSetID = Convert.ToInt32(o);
         }
-        PGTDataSet.ScriptSettingRow _scriptSettings = PGT.Common.SettingsManager.GetCurrentScriptSettings(this.pgtDataSet);
+        SNGDataSet.ScriptSettingRow _scriptSettings = Scriptngo.Common.SettingsManager.GetCurrentScriptSettings(this.SNGDataSet);
         string sepChar = _scriptSettings.CSVSeparator;
         string sExtendedHeader = string.Join(sepChar, Enum.GetNames(typeof(InputFileHeader)));
         sExtendedHeader += "SetTargetID";
-        PGT.PGTScriptManager _ScriptManager = ScriptingFormManager.OpenNewScriptingForm();
+        Scriptngo.SNGScriptManager _ScriptManager = ScriptingFormManager.OpenNewScriptingForm();
         if (_ScriptManager != null)
         {
           ScriptManagers.Add(_ScriptManager);
@@ -301,7 +302,7 @@ namespace PGT.ConfigurationManager
       }
     }
 
-    private void SaveScriptResults(PGTScriptManager thisManager)
+    private void SaveScriptResults(SNGScriptManager thisManager)
     {
       int defaultColumnCount = Enum.GetNames(typeof(InputFileHeader)).Length - 1;
       bool errorOccurred = false;
@@ -378,7 +379,7 @@ namespace PGT.ConfigurationManager
     private void _ScriptManager_OnScriptFinished(object sender, Common.ScriptEventArgs e)
     {
       DebugEx.WriteLine("ConfigurationManager : OnScriptFinished - " + e.Reason.ToString(), DebugLevel.Informational);
-      PGTScriptManager thisManager = null;
+      SNGScriptManager thisManager = null;
       if (sender is ScriptExecutor) thisManager = ScriptingFormManager.GetScriptManager(sender as ScriptExecutor);
       else if (sender is ScriptingForm) thisManager = (sender as ScriptingForm).ScriptManager;
       if (ScriptManagers.Contains(thisManager))
@@ -419,7 +420,7 @@ namespace PGT.ConfigurationManager
     private void _ScriptManager_OnScriptAborted(object sender, Common.ScriptEventArgs e)
     {
       DebugEx.WriteLine("COnfigurationManager : OnScriptAborted - " + e.Reason, DebugLevel.Informational);
-      PGTScriptManager thisManager = null;
+      SNGScriptManager thisManager = null;
       if (sender is ScriptExecutor) thisManager = ScriptingFormManager.GetScriptManager(sender as ScriptExecutor);
       else if (sender is ScriptingForm) thisManager = (sender as ScriptingForm).ScriptManager;
       if (ScriptManagers.Contains(thisManager))
@@ -495,7 +496,7 @@ namespace PGT.ConfigurationManager
           {
             if (MessageBox.Show(string.Format("There are {0} opened Script Executor window(s) open. If you close Configuration Manager, the script windows will also be closed and running scripts will be terminated. Do you want to proceed ?", ScriptManagers.Count), "Automated scripting in progress", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
-              foreach (PGTScriptManager thisManager in ScriptManagers)
+              foreach (SNGScriptManager thisManager in ScriptManagers)
               {
                 thisManager.OnScriptAborted -= this._ScriptManager_OnScriptAborted;
                 thisManager.OnScriptFinished -= this._ScriptManager_OnScriptFinished;

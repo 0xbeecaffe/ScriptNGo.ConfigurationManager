@@ -1,4 +1,4 @@
-﻿namespace PGT.ConfigurationManager
+﻿namespace Scriptngo.ConfigurationManager
 {
   partial class ConfigPuller
   {
@@ -34,12 +34,12 @@
       this.tbSelConfigSetName = new System.Windows.Forms.TextBox();
       this.cbScriptPerHost = new System.Windows.Forms.CheckBox();
       this.btnPullConfig = new System.Windows.Forms.Button();
-      this.configDS = new PGT.ConfigurationManager.ConfigDS();
+      this.configDS = new Scriptngo.ConfigurationManager.ConfigDS();
       this.cbCreateNewSet = new System.Windows.Forms.CheckBox();
-      this.setTargetsTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
+      this.setTargetsTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.SetTargetsTableAdapter();
       this.cbAutoSave = new System.Windows.Forms.CheckBox();
-      this.qTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
-      this.configLinesTA = new PGT.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
+      this.qTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.QueriesTableAdapter();
+      this.configLinesTA = new Scriptngo.ConfigurationManager.ConfigDSTableAdapters.ConfigLinesTableAdapter();
       this.clbTargets = new System.Windows.Forms.CheckedListBox();
       this.cmTargets = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.cmTargetsSelectAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,9 +77,9 @@
       // cbScriptPerHost
       // 
       this.cbScriptPerHost.AutoSize = true;
-      this.cbScriptPerHost.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_SeparateWindow;
+      this.cbScriptPerHost.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_SeparateWindow;
       this.cbScriptPerHost.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.cbScriptPerHost.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_SeparateWindow", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.cbScriptPerHost.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_SeparateWindow", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.cbScriptPerHost.Location = new System.Drawing.Point(16, 67);
       this.cbScriptPerHost.Name = "cbScriptPerHost";
       this.cbScriptPerHost.Size = new System.Drawing.Size(189, 17);
@@ -108,9 +108,9 @@
       // cbCreateNewSet
       // 
       this.cbCreateNewSet.AutoSize = true;
-      this.cbCreateNewSet.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_CreateNewSet;
+      this.cbCreateNewSet.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_CreateNewSet;
       this.cbCreateNewSet.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.cbCreateNewSet.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_CreateNewSet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.cbCreateNewSet.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_CreateNewSet", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.cbCreateNewSet.Location = new System.Drawing.Point(16, 44);
       this.cbCreateNewSet.Name = "cbCreateNewSet";
       this.cbCreateNewSet.Size = new System.Drawing.Size(280, 17);
@@ -126,9 +126,9 @@
       // 
       this.cbAutoSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.cbAutoSave.AutoSize = true;
-      this.cbAutoSave.Checked = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_AutoSave;
+      this.cbAutoSave.Checked = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_AutoSave;
       this.cbAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.cbAutoSave.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_AutoSave", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.cbAutoSave.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_AutoSave", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.cbAutoSave.Location = new System.Drawing.Point(16, 264);
       this.cbAutoSave.Name = "cbAutoSave";
       this.cbAutoSave.Size = new System.Drawing.Size(194, 17);
@@ -231,7 +231,7 @@
       // 
       // numHostPerForm
       // 
-      this.numHostPerForm.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::PGT.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_HostPerForm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.numHostPerForm.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Scriptngo.ConfigurationManager.Properties.Settings.Default, "ConfigManager_Puller_HostPerForm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.numHostPerForm.Location = new System.Drawing.Point(198, 66);
       this.numHostPerForm.Maximum = new decimal(new int[] {
             1000,
@@ -246,7 +246,7 @@
       this.numHostPerForm.Name = "numHostPerForm";
       this.numHostPerForm.Size = new System.Drawing.Size(54, 20);
       this.numHostPerForm.TabIndex = 49;
-      this.numHostPerForm.Value = global::PGT.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_HostPerForm;
+      this.numHostPerForm.Value = global::Scriptngo.ConfigurationManager.Properties.Settings.Default.ConfigManager_Puller_HostPerForm;
       // 
       // label3
       // 

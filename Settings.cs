@@ -1,15 +1,16 @@
 ﻿/* #########################################################################*/
 /* #                                                                       #*/
 /* #  This file is part of ConfigurationManager project, which is written  #*/
-/* #  as a PGT plug-in to help configuration management of Cisco devices.  #*/
+/* #  as a Script N'Go plug-in to help configuration management of         #*/
+/* #  Cisco devices.                                                       #*/
 /* #                                                                       #*/
 /* #  You may not use this file except in compliance with the license.     #*/
 /* #                                                                       #*/
-/* #  Copyright Laszlo Frank (c) 2014-2017                                 #*/
+/* #  Copyright Laszlo Frank (c) 2014-2020                                 #*/
 /* #                                                                       #*/
 /* #########################################################################*/
 
-namespace PGT.ConfigurationManager.Properties
+namespace Scriptngo.ConfigurationManager.Properties
 {
 
 
@@ -31,6 +32,19 @@ namespace PGT.ConfigurationManager.Properties
       // this.SettingsSaving += this.SettingsSavingEventHandler;
       //
       this.SettingsLoaded += Settings_SettingsLoaded;
+      this.PropertyChanged += Settings_PropertyChanged;
+    }
+
+    private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      if (this.SQLIntegratedSecurity)
+      {
+        this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Integrated Security=True", this.SQLServerName, this.DatabaseName);
+      }
+      else
+      {
+        this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", this.SQLServerName, this.DatabaseName, this.SQLServerUsername, this.SQLServerPassword);
+      }
     }
 
     void Settings_SettingsLoaded(object sender, System.Configuration.SettingsLoadedEventArgs e)
