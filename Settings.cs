@@ -37,13 +37,16 @@ namespace Scriptngo.ConfigurationManager.Properties
 
     private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      if (this.SQLIntegratedSecurity)
+      if (e.PropertyName == "SQLServerName" || e.PropertyName == "DatabaseName" || e.PropertyName == "SQLServerUsername" || e.PropertyName == "SQLServerPassword" || e.PropertyName == "SQLIntegratedSecurity")
       {
-        this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Integrated Security=True", this.SQLServerName, this.DatabaseName);
-      }
-      else
-      {
-        this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", this.SQLServerName, this.DatabaseName, this.SQLServerUsername, this.SQLServerPassword);
+        if (this.SQLIntegratedSecurity)
+        {
+          this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Integrated Security=True", this.SQLServerName, this.DatabaseName);
+        }
+        else
+        {
+          this["PGTConnectionString"] = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", this.SQLServerName, this.DatabaseName, this.SQLServerUsername, this.SQLServerPassword);
+        }
       }
     }
 

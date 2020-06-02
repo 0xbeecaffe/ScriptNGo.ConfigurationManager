@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Device Configuration Manager")]
 [assembly: AssemblyDescription("Script N'Go Configuration Manager plugin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ScriptNGo")]
+[assembly: AssemblyCompany("Eszközbeszerzés Kft.")]
 [assembly: AssemblyProduct("ScriptNGo Device Configuration Manager")]
-[assembly: AssemblyCopyright("Copyright © 2016-2020 by Laszlo Frank")]
+[assembly: AssemblyCopyright("Copyright © 2020 by Eszközbeszerzés Kft.")]
 [assembly: AssemblyTrademark("ScriptNGo")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8f0e19dd-a614-4622-90aa-26d9cfe4c85d")]
+[assembly: Guid("beecafee-a614-4622-90aa-26d9cfe4c85d")]
 
 // Version information for an assembly consists of the following four values:
 //

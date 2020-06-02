@@ -61,21 +61,26 @@
   <ItemGroup>
     <Reference Include="Common">
       <HintPath>..\ScriptNGo\bin\Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\ScriptNGo\bin\MoreLinq.dll</HintPath>
     </Reference>
     <Reference Include="ScriptingEngine">
       <HintPath>..\ScriptNGo\bin\ScriptingEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SNGCore">
       <HintPath>..\ScriptNGo\bin\SNGCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SNGInterfaces">
       <HintPath>..\ScriptNGo\bin\SNGInterfaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="STerminal">
       <HintPath>..\ScriptNGo\bin\STerminal.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

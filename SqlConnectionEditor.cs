@@ -14,6 +14,8 @@ using Scriptngo.Common;
 using Scriptngo.ConfigurationManager.Properties;
 using System;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scriptngo.ConfigurationManager
@@ -55,7 +57,6 @@ namespace Scriptngo.ConfigurationManager
         {
 					_animation?.Cancel();
         }
-        MessageBox.Show("Application needs to be restarted for the updated configuration to take effect.", "Restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
     }
 
