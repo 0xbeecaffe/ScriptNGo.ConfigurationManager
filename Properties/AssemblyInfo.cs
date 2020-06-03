@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Device Configuration Manager")]
 [assembly: AssemblyDescription("Script N'Go Configuration Manager plugin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Eszközbeszerzés Kft.")]
+[assembly: AssemblyCompany("BeeCaffe Labs LLC.")]
 [assembly: AssemblyProduct("ScriptNGo Device Configuration Manager")]
-[assembly: AssemblyCopyright("Copyright © 2020 by Eszközbeszerzés Kft.")]
+[assembly: AssemblyCopyright("Copyright © 2020 by BeeCaffe Labs LLC.")]
 [assembly: AssemblyTrademark("ScriptNGo")]
 [assembly: AssemblyCulture("")]
 
